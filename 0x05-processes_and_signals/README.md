@@ -1,342 +1,183 @@
-0x05. Processes and signals
-DevOps
-Shell
-Bash
-Syscall
-Scripting
- Weight: 1
- Project will start May 3, 2024 6:00 AM, must end by May 4, 2024 6:00 AM
- Checker was released at May 3, 2024 12:00 PM
- An auto review will be launched at the deadline
-About Bash projects
-Unless stated, all your projects will be auto-corrected with Ubuntu 20.04 LTS.
-
-Resources
-Read or watch:
-
-Linux PID
-Linux process
-Linux signal
-Process management in linux
-man or help:
-
-ps
-pgrep
-pkill
-kill
-exit
-trap
-Learning Objectives
-At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
-
-General
-What is a PID
-What is a process
-How to find a process’ PID
-How to kill a process
-What is a signal
-What are the 2 signals that cannot be ignored
-Copyright - Plagiarism
-You are tasked to come up with solutions for the tasks below yourself to meet with the above learning objectives.
-You will not be able to meet the objectives of this or any following project by copying and pasting someone else’s work.
-You are not allowed to publish any content of this project.
-Any form of plagiarism is strictly forbidden and will result in removal from the program.
-Requirements
-General
-Allowed editors: vi, vim, emacs
-All your files will be interpreted on Ubuntu 20.04 LTS
-All your files should end with a new line
-A README.md file, at the root of the folder of the project, is mandatory
-All your Bash script files must be executable
-Your Bash script must pass Shellcheck (version 0.7.0 via apt-get) without any error
-The first line of all your Bash scripts should be exactly #!/usr/bin/env bash
-The second line of all your Bash scripts should be a comment explaining what is the script doing
-More Info
-For those who want to know more and learn about all signals, check out this article.
-
-Tasks
-0. What is my PID
-mandatory
-Write a Bash script that displays its own PID.
-
-sylvain@ubuntu$ ./0-what-is-my-pid
-4120
-sylvain@ubuntu$
-Repo:
-
-GitHub repository: alx-system_engineering-devops
-Directory: 0x05-processes_and_signals
-File: 0-what-is-my-pid
-  
-1. List your processes
-mandatory
-Write a Bash script that displays a list of currently running processes.
-
-Requirements:
-
-Must show all processes, for all users, including those which might not have a TTY
-Display in a user-oriented format
-Show process hierarchy
-sylvain@ubuntu$ ./1-list_your_processes | head -50
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root         2  0.0  0.0      0     0 ?        S    Feb13   0:00 [kthreadd]
-root         3  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [ksoftirqd/0]
-root         4  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [kworker/0:0]
-root         5  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [kworker/0:0H]
-root         7  0.0  0.0      0     0 ?        S    Feb13   0:02  \_ [rcu_sched]
-root         8  0.0  0.0      0     0 ?        S    Feb13   0:03  \_ [rcuos/0]
-root         9  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [rcu_bh]
-root        10  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [rcuob/0]
-root        11  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [migration/0]
-root        12  0.0  0.0      0     0 ?        S    Feb13   0:02  \_ [watchdog/0]
-root        13  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [khelper]
-root        14  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [kdevtmpfs]
-root        15  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [netns]
-root        16  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [writeback]
-root        17  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [kintegrityd]
-root        18  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [bioset]
-root        19  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [kworker/u3:0]
-root        20  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [kblockd]
-root        21  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [ata_sff]
-root        22  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [khubd]
-root        23  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [md]
-root        24  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [devfreq_wq]
-root        25  0.0  0.0      0     0 ?        S    Feb13   0:41  \_ [kworker/0:1]
-root        27  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [khungtaskd]
-root        28  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [kswapd0]
-root        29  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [vmstat]
-root        30  0.0  0.0      0     0 ?        SN   Feb13   0:00  \_ [ksmd]
-root        31  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [fsnotify_mark]
-root        32  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [ecryptfs-kthrea]
-root        33  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [crypto]
-root        45  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [kthrotld]
-root        46  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [kworker/u2:1]
-root        65  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [deferwq]
-root        66  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [charger_manager]
-root       108  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [kpsmoused]
-root       125  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [scsi_eh_0]
-root       126  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [kworker/u2:2]
-root       172  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [jbd2/sda1-8]
-root       173  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [ext4-rsv-conver]
-root       409  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [iprt]
-root       549  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [kworker/u3:1]
-root       808  0.0  0.0      0     0 ?        S    Feb13   0:00  \_ [kauditd]
-root       834  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [rpciod]
-root       846  0.0  0.0      0     0 ?        S<   Feb13   0:00  \_ [nfsiod]
-root         1  0.0  0.4  33608  2168 ?        Ss   Feb13   0:00 /sbin/init
-root       373  0.0  0.0  19472   408 ?        S    Feb13   0:00 upstart-udev-bridge --daemon
-root       378  0.0  0.2  49904  1088 ?        Ss   Feb13   0:00 /lib/systemd/systemd-udevd --daemon
-root       518  0.0  0.1  23416   644 ?        Ss   Feb13   0:00 rpcbind
-statd      547  0.0  0.1  21536   852 ?        Ss   Feb13   0:00 rpc.statd -L
-sylvain@ubuntu$
-Repo:
-
-GitHub repository: alx-system_engineering-devops
-Directory: 0x05-processes_and_signals
-File: 1-list_your_processes
-  
-2. Show your Bash PID
-mandatory
-Using your previous exercise command, write a Bash script that displays lines containing the bash word, thus allowing you to easily get the PID of your Bash process.
-
-Requirements:
-
-You cannot use pgrep
-The third line of your script must be # shellcheck disable=SC2009 (for more info about ignoring shellcheck error here)
-sylvain@ubuntu$ sylvain@ubuntu$ ./2-show_your_bash_pid
-sylvain   4404  0.0  0.7  21432  4000 pts/0    Ss   03:32   0:00          \_ -bash
-sylvain   4477  0.0  0.2  11120  1352 pts/0    S+   03:40   0:00              \_ bash ./2-show_your_bash_PID
-sylvain   4479  0.0  0.1  10460   912 pts/0    S+   03:40   0:00                  \_ grep bash
-sylvain@ubuntu$ 
-Here we can see that my Bash PID is 4404.
-
-Repo:
-
-GitHub repository: alx-system_engineering-devops
-Directory: 0x05-processes_and_signals
-File: 2-show_your_bash_pid
-  
-3. Show your Bash PID made easy
-mandatory
-Write a Bash script that displays the PID, along with the process name, of processes whose name contain the word bash.
-
-Requirements:
-
-You cannot use ps
-sylvain@ubuntu$ ./3-show_your_bash_pid_made_easy
-4404 bash
-4555 bash
-sylvain@ubuntu$ ./3-show_your_bash_pid_made_easy
-4404 bash
-4557 bash
-sylvain@ubuntu$ 
-Here we can see that:
-
-For the first iteration: bash PID is 4404 and that the 3-show_your_bash_pid_made_easy script PID is 4555
-For the second iteration: bash PID is 4404 and that the 3-show_your_bash_pid_made_easy script PID is 4557
-Repo:
-
-GitHub repository: alx-system_engineering-devops
-Directory: 0x05-processes_and_signals
-File: 3-show_your_bash_pid_made_easy
-  
-4. To infinity and beyond
-mandatory
-Write a Bash script that displays To infinity and beyond indefinitely.
-
-Requirements:
-
-In between each iteration of the loop, add a sleep 2
-sylvain@ubuntu$ ./4-to_infinity_and_beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-^C
-sylvain@ubuntu$ 
-Note that I ctrl+c (killed) the Bash script in the example.
-
-Repo:
-
-GitHub repository: alx-system_engineering-devops
-Directory: 0x05-processes_and_signals
-File: 4-to_infinity_and_beyond
-  
-5. Don't stop me now!
-mandatory
-We stopped our 4-to_infinity_and_beyond process using ctrl+c in the previous task, there is actually another way to do this.
-
-Write a Bash script that stops 4-to_infinity_and_beyond process.
-
-Requirements:
-
-You must use kill
-Terminal #0
-
-sylvain@ubuntu$ ./4-to_infinity_and_beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-Terminated
-sylvain@ubuntu$ 
-Terminal #1
-
-sylvain@ubuntu$ ./5-dont_stop_me_now 
-sylvain@ubuntu$ 
-I opened 2 terminals in this example, started by running my 4-to_infinity_and_beyond Bash script in terminal #0 and then moved on terminal #1 to run 5-dont_stop_me_now. We can then see in terminal #0 that my process has been terminated.
-
-Repo:
-
-GitHub repository: alx-system_engineering-devops
-Directory: 0x05-processes_and_signals
-File: 5-dont_stop_me_now
-  
-6. Stop me if you can
-mandatory
-Write a Bash script that stops 4-to_infinity_and_beyond process.
-
-Requirements:
-
-You cannot use kill or killall
-Terminal #0
-
-sylvain@ubuntu$ ./4-to_infinity_and_beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-Terminated
-sylvain@ubuntu$ 
-Terminal #1
-
-sylvain@ubuntu$ ./6-stop_me_if_you_can
-sylvain@ubuntu$ 
-I opened 2 terminals in this example, started by running my 4-to_infinity_and_beyond Bash script in terminal #0 and then moved on terminal #1 to run 6-stop_me_if_you_can. We can then see in terminal #0 that my process has been terminated.
-
-Repo:
-
-GitHub repository: alx-system_engineering-devops
-Directory: 0x05-processes_and_signals
-File: 6-stop_me_if_you_can
-  
-7. Highlander
-mandatory
-Write a Bash script that displays:
-
-To infinity and beyond indefinitely
-With a sleep 2 in between each iteration
-I am invincible!!! when receiving a SIGTERM signal
-Make a copy of your 6-stop_me_if_you_can script, name it 67-stop_me_if_you_can, that kills the 7-highlander process instead of the 4-to_infinity_and_beyond one.
-
-Terminal #0
-
-sylvain@ubuntu$ ./7-highlander
-To infinity and beyond
-To infinity and beyond
-I am invincible!!!
-To infinity and beyond
-I am invincible!!!
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-I am invincible!!!
-To infinity and beyond
-^C
-sylvain@ubuntu$ 
-Terminal #1
-
-sylvain@ubuntu$ ./67-stop_me_if_you_can 
-sylvain@ubuntu$ ./67-stop_me_if_you_can
-sylvain@ubuntu$ ./67-stop_me_if_you_can
-sylvain@ubuntu$ 
-I started 7-highlander in Terminal #0 and then run 67-stop_me_if_you_can in terminal #1, for every iteration we can see I am invincible!!! appearing in terminal #0.
-
-Repo:
-
-GitHub repository: alx-system_engineering-devops
-Directory: 0x05-processes_and_signals
-File: 7-highlander
-  
-8. Beheaded process
-mandatory
-Write a Bash script that kills the process 7-highlander.
-
-Terminal #0
-
-sylvain@ubuntu$ ./7-highlander 
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-To infinity and beyond
-Killed
-sylvain@ubuntu$ 
-Terminal #1
-
-sylvain@ubuntu$ ./8-beheaded_process
-sylvain@ubuntu$ 
-I started 7-highlander in Terminal #0 and then run 8-beheaded_process in terminal #1 and we can see that the 7-highlander has been killed.
-
-Repo:
-
-GitHub repository: alx-system_engineering-devops
-Directory: 0x05-processes_and_signals
-File: 8-beheaded_process
+>0-what-is-my-pid
+>1-list_your_processes
+>2-show_your_bash_pid
+>3-show_your_bash_pid_made_easy
+>4-to_infinity_and_beyond
+>5-kill_me_now
+>6-kill_me_now_made_easy
+>7-highlander
+>8-beheaded_process
+>9-process_and_pid_file
+>10-manage_my_process
+>11-zombie.c
+>12-screencast_unix_signal
+ 
+<li><a href="http://www.linfo.org/pid.html">Linux PID</a></li>
+<li><a href="http://www.thegeekstuff.com/2012/03/linux-processes-environment/">Linux process</a></li>
+<li><p><a href="http://www.thegeekstuff.com/2012/03/linux-signals-fundamentals/">Linux signal</a></p></li>
+<li><p>man: <code>ps</code>, <code>pgrep</code>, <code>pkill</code>, <code>kill</code>, <code>exit</code></p></li>
+<li><p>help: <code>trap</code></p></li>
+<p>For those who want to know more and learn about all signals, check out <a href="http://www.computerhope.com/unix/signals.htm">this article</a>.</p>
+<p>At the end of this project you are expected to be able to explain, <strong>without the help of Google</strong>:</p>
+<li>What is a PID</li>
+<li>What is a process</li>
+<li>How to find a process PID</li>
+<li>How to kill a process</li>
+<li>What is a signal</li>
+<li>What are the 2 signals that cannot be ignored</li>
+<li>Allowed editors: <code>vi</code>, <code>vim</code>, <code>emacs</code></li>
+<li>All your files will be interpreted on Ubuntu 14.04 LTS</li>
+<li>All your files should end with a new line</li>
+<li>A <code>README.md</code> file, at the root of the folder of the project, is mandatory</li>
+<li>All your Bash script files must be executable</li>
+<li>Your Bash script must pass <code>Shellcheck</code> (version <code>0.3.3-1~ubuntu14.04.1</code> via <code>apt-get</code>) without any error</li>
+<li>The first line of all your Bash scripts should be exactly <code>#!/usr/bin/env bash</code></li>
+<li>The second line of all your Bash scripts should be a comment explaining what is the script doing</li>
+    <p>Write a Bash script that displays its PID.</p>
+	        <li>GitHub repository: <code>holberton-system_engineering-devops</code></li>
+		        <li>Directory: <code>0x05-processes_and_signals</code></li>
+			        <li>File: <code>0-what-is-my-pid</code></li>
+    <p>Write a Bash script that displays a list of currently running processes.</p>
+<p>Requirements:</p>
+<li>Must show all processes, for all users, including those which might not have a TTY</li>
+<li>Display a user-oriented format</li>
+<li>Show process hierarchy</li>
+	        <li>GitHub repository: <code>holberton-system_engineering-devops</code></li>
+		        <li>Directory: <code>0x05-processes_and_signals</code></li>
+			        <li>File: <code>1-list_your_processes</code></li>
+    <p>Using your previous exercise command, write a Bash script that displays line containing the <code>bash</code> word, this allowing you to easily get the PID of your Bash process</p>
+<p>Requirements:</p>
+<li>You cannot use <code>pgrep</code></li>
+<li>The third line of your script must be <code># shellcheck disable=SC2009</code> (for more info about ignoring <code>shellcheck</code> error <a href="https://github.com/koalaman/shellcheck/wiki/Ignore">here</a>)</li>
+<p>Here we can see that my Bash PID is <code>4404</code>.</p>
+	        <li>GitHub repository: <code>holberton-system_engineering-devops</code></li>
+		        <li>Directory: <code>0x05-processes_and_signals</code></li>
+			        <li>File: <code>2-show_your_bash_pid</code></li>
+    <p>Write a Bash script that displays the PID, along with the process name, of processes which name contains the word <code>bash</code>.</p>
+<p>Requirements:</p>
+<li>You cannot use <code>ps</code></li>
+<p>Here we can see that: </p>
+<li>For the first iteration: <code>bash</code> PID is <code>4404</code> and that the <code>3-show_your_bash_pid_made_easy</code> script PID is <code>4555</code></li>
+<li>For the second iteration: <code>bash</code> PID is <code>4404</code> and that the <code>3-show_your_bash_pid_made_easy</code> script PID is <code>4557</code></li>
+	        <li>GitHub repository: <code>holberton-system_engineering-devops</code></li>
+		        <li>Directory: <code>0x05-processes_and_signals</code></li>
+			        <li>File: <code>3-show_your_bash_pid_made_easy</code></li>
+    <p>Write a Bash script that displays <code>To infinity and beyond</code> indefinitely. </p>
+<p>Requirements:</p>
+<li>In between each iteration of the loop, add a <code>sleep 2</code></li>
+<p>Note that I <code>ctrl+c</code> (killed) the Bash script in the example.</p>
+	        <li>GitHub repository: <code>holberton-system_engineering-devops</code></li>
+		        <li>Directory: <code>0x05-processes_and_signals</code></li>
+			        <li>File: <code>4-to_infinity_and_beyond</code></li>
+    <p>We killed our <code>4-to_infinity_and_beyond</code> process using <code>ctrl+c</code> in the previous task, there is actually another way to do this.</p>
+<p>Write a Bash script that kills <code>4-to_infinity_and_beyond</code> process.</p>
+<p>Requirements:</p>
+<li>You must use <code>kill</code></li>
+<p>Terminal #0</p>
+<p>Terminal #1</p>
+<p>I opened 2 terminals in this example, started by running my <code>4-to_infinity_and_beyond</code> Bash script in terminal #0 and then moved on terminal #1 to run <code>5-kill_me_now</code>. We can then see in terminal #0 that my process has been terminated.</p>
+	        <li>GitHub repository: <code>holberton-system_engineering-devops</code></li>
+		        <li>Directory: <code>0x05-processes_and_signals</code></li>
+			        <li>File: <code>5-kill_me_now</code></li>
+    <p>Write a Bash script that kills <code>4-to_infinity_and_beyond</code> process.</p>
+<p>Requirements:</p>
+<li>You cannot use <code>kill</code> or <code>killall</code></li>
+<p>Terminal #0</p>
+<p>Terminal #1</p>
+<p>I opened 2 terminals in this example, started by running my <code>4-to_infinity_and_beyond</code> Bash script in terminal #0 and then moved on terminal #1 to run <code>6-kill_me_now_made_easy</code>. We can then see in terminal #0 that my process has been terminated.</p>
+	        <li>GitHub repository: <code>holberton-system_engineering-devops</code></li>
+		        <li>Directory: <code>0x05-processes_and_signals</code></li>
+			        <li>File: <code>6-kill_me_now_made_easy</code></li>
+    <p>Write a Bash script that displays: </p>
+<li><code>To infinity and beyond</code> indefinitely</li>
+<li>With a <code>sleep 2</code> in between each iteration</li>
+<li><code>I am invincible!!!</code> when receiving a <code>SIGTERM</code> signal</li>
+<p>Make a copy of your <code>6-kill_me_now_made_easy</code> script, name it <code>67-kill_me_now_made_easy</code>,  that kills the <code>7-highlander</code> process instead of the <code>4-to_infinity_and_beyond</code> one.</p>
+<p>Terminal #0</p>
+<p>Terminal #1</p>
+<p>I started <code>7-highlander</code> in Terminal #0 and then run <code>67-kill_me_now_made_easy</code> in terminal #1, for every iteration we can see <code>I am invincible!!!</code> appearing in terminal #0.</p>
+	        <li>GitHub repository: <code>holberton-system_engineering-devops</code></li>
+		        <li>Directory: <code>0x05-processes_and_signals</code></li>
+			        <li>File: <code>7-highlander</code></li>
+    <p>Write a Bash script that kills the process <code>7-highlander</code>.</p>
+<p>Terminal #0</p>
+<p>Terminal #1</p>
+<p>I started <code>7-highlander</code> in Terminal #0 and then run <code>8-beheaded_process</code> in terminal #1 and we can see that the <code>7-highlander</code> has been killed.</p>
+	        <li>GitHub repository: <code>holberton-system_engineering-devops</code></li>
+		        <li>Directory: <code>0x05-processes_and_signals</code></li>
+			        <li>File: <code>8-beheaded_process</code></li>
+    <p>Write a Bash script that: </p>
+<li>Creates the file <code>/var/run/holbertonscript.pid</code> containing its PID</li>
+<li>Displays <code>To infinity and beyond</code> indefinitely</li>
+<li>Displays <code>I hate the kill command</code> when receiving a SIGTERM signal</li>
+<li>Displays <code>Y U no love me?!</code> when receiving a SIGINT signal</li>
+<li>Deletes the file <code>/var/run/holbertonscript.pid</code> and terminate itself when receiving a SIGQUIT or SIGTERM signal</li>
+<p><img src="http://i.imgur.com/m363Nha.jpg" alt="&quot;Y U no love me?!&quot; picture"></p>
+<p>Executing the <code>9-process_and_pid_file</code> script and killing it with <code>ctrl+c</code>.</p>
+<p>Terminal #0</p>
+<p>Terminal #1</p>
+<p>Starting <code>9-process_and_pid_file</code> in the terminal #0 and then killing it in the terminal #1.</p>
+	        <li>GitHub repository: <code>holberton-system_engineering-devops</code></li>
+		        <li>Directory: <code>0x05-processes_and_signals</code></li>
+			        <li>File: <code>9-process_and_pid_file</code></li>
+    <p><img src="http://i.imgur.com/o9q0iPA.jpg" alt="Priest stopping data center with /etc/init.d/DEAMON STOP"></p>
+<p>Read:</p>
+<li><a href="http://bashitout.com/2013/05/18/Ampersands-on-the-command-line.html">&amp;</a></li>
+<li><a href="http://www.ghacks.net/2009/04/04/get-to-know-linux-the-etcinitd-directory/">init.d</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Daemon_(computing)">Daemon</a></li>
+<li><a href="http://wiki.bash-hackers.org/scripting/posparams">Positional parameters</a></li>
+<p>man: <code>sudo</code></p>
+<p>Programs that are detached from the terminal and running in the background are called daemons or processes, need to be managed. The general minimum set of instructions is: <code>start</code>, <code>restart</code> and <code>stop</code>. The most popular way of doing so on Unix system is to use the init scripts.</p>
+<p>Write a <code>manage_my_process</code> Bash script that: </p>
+<li>Indefinitely writes <code>I am alive!</code> to the file <code>/tmp/my_process</code></li>
+<li>In between every <code>I am alive!</code> message, the program should pause for 2 seconds</li>
+<p>Write Bash (init) script <code>10-manage_my_process</code> that manages <code>manage_my_process</code></p>
+<p>Requirements:</p>
+<li>When passing the argument <code>start</code>:
+<li>Starts <code>manage_my_process</code></li>
+<li>Creates a file containing its PID in <code>/var/run/my_process.pid</code></li>
+<li>Displays <code>manage_my_process started</code></li>
+<li>When passing the argument <code>stop</code>:
+<li>Stops <code>manage_my_process</code><br></li>
+<li>Deletes the file  <code>/var/run/my_process.pid</code></li>
+<li>Displays <code>manage_my_process stopped</code></li>
+<li>When passing the argument <code>restart</code>
+<li>Stops <code>manage_my_process</code><br></li>
+<li>Deletes the file  <code>/var/run/my_process.pid</code></li>
+<li>Starts <code>manage_my_process</code></li>
+<li>Creates a file containing its PID in <code>/var/run/my_process.pid</code></li>
+<li>Displays <code>manage_my_process restarted</code></li>
+<li>Displays <code>Usage: manage_my_process {start|stop|restart}</code> if any other argument or no argument is passed</li>
+<p>Note that this init script is far from being perfect (but good enough for the sake of manipulating process and PID file), for example we do not handle the case where we check if a process is already running when doing <code>./10-manage_my_process start</code>, in our case it will simply create a new process instead of saying that it is already started.</p>
+	        <li>GitHub repository: <code>holberton-system_engineering-devops</code></li>
+		        <li>Directory: <code>0x05-processes_and_signals</code></li>
+			        <li>File: <code>10-manage_my_process</code></li>
+    <p><a href="http://fineartamerica.com/featured/zombie-seahorse-lauren-b.html"><img src="http://i.imgur.com/C6mO7b3.jpg" alt="Zombie searhose"></a></p>
+<p>Read <a href="https://zombieprocess.wordpress.com/what-is-a-zombie-process/">what a zombie process is</a>.</p>
+<p>Write a C program that creates 5 zombie processes.</p>
+<p>Requirements:</p>
+<li>For every zombie process created, it displays <code>Zombie process created, PID: ZOMBIE_PID</code></li>
+<li>Your code should use the Betty style. It will be checked using <code>betty-style.pl</code> and <code>betty-doc.pl</code></li>
+<li>When you code is done creating the parent process and the zombies, use the function bellow</li>
+<p>Example:</p>
+<p>Terminal #0</p>
+<p>Terminal #1</p>
+<p>In Terminal #0, I start by compiling <code>11-zombie.c</code> and executing <code>zombie</code> which creates 5 zombie processes.
+	        <li>GitHub repository: <code>holberton-system_engineering-devops</code></li>
+		        <li>Directory: <code>0x05-processes_and_signals</code></li>
+			        <li>File: <code>11-zombie.c</code></li>
+    <p>Now that you master signals, what about sharing your knowledge?</p>
+<p>Create a screencast where you live-code a task of your choice from this project or even a mix of them.</p>
+<p>Requirements:</p>
+<li>Step by step video</li>
+<li>Two minutes of above</li>
+<li>Done in English</li>
+<li>Published to Youtube</li>
+<p>While you are free to choose the recording system to record the screencast, I highly recommend <a href="https://screencast-o-matic.com">screencast-o-matic</a>.</p>
+<p>Once you are done, please share the Youtube URL in your answer file and below.</p>
+<p>We&#39;ll be watching you!</p>
+<p><img src="https://media.giphy.com/media/l0MYEI1kqBRBrpEdO/giphy.gif" alt="eating popcorn and being impressed"></p>
+	        <li>GitHub repository: <code>holberton-system_engineering-devops</code></li>
+		        <li>Directory: <code>0x05-processes_and_signals</code></li>
+			        <li>File: <code>12-screencast_unix_signal</code></li>
+					          <p>Unless stated, all your projects will be auto-corrected with Ubuntu 14.04 LTS.</p>
