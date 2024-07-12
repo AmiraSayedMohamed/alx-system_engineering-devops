@@ -1,7 +1,18 @@
 #!/usr/bin/env bash
 # Setting up server to curl port 80 with no issues
+
+# Update package list and install Nginx
 apt-get update -y
-apt-get -y install curl
 apt-get install -y nginx
-sudo service nginx enable
-sudo service nginx start
+
+# Ensure Nginx is enabled to start at boot and is started now
+systemctl enable nginx
+systemctl start nginx
+
+# Ensure Nginx is listening on port 80
+sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+sed -i 's/listen \[::\]:80 default_server;/listen \[::\]:80;/g' /etc/nginx/sites-available/default
+
+# Restart Nginx to apply changes
+systemctl restart nginx
+
