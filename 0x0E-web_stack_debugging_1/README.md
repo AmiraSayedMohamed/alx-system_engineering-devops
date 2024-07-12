@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Web Stack Debugging
 
 This project contains tasks for learning about how to debug web stacks.
@@ -93,3 +94,7 @@ This project contains tasks for learning about how to debug web stacks.
      * nginx is not running
     root@966c5664b21f:/#
     ```
+=======
+C## 0x0E Web Stack Debugging #1
+README.md
+>>>>>>> 6283ce7492db3d46b3346bf2934bde174a2479e9
