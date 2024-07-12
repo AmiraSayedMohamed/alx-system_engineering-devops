@@ -4,5 +4,3 @@
 apt-get -y update
 apt-get install -y nginx
 sudo service nginx start
-echo "hi" > /var/run/nginx.pid
-echo "hi" > /run/nginx.pid
