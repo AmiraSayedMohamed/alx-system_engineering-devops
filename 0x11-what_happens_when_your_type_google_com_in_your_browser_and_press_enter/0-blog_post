@@ -1,0 +1,77 @@
+# What Happens When You Type https://www.google.com in Your Browser and Press Enter
+![what happen when you type google.com](data:image/png;base64,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)
+Understanding the process that takes place when you enter a URL into your browser is crucial for any software engineer. This post will walk you through the journey of a web request from your browser to the server and back, covering key components like DNS, TCP/IP, Firewalls, HTTPS/SSL, Load Balancers, Web Servers, Application Servers, and Databases.
+
+## 1. DNS Request
+
+Domain Name System (DNS) is like the phonebook of the internet. When you type https://www.google.com, the browser needs to translate this human-readable domain into an IP address that machines understand.
+
+- **Browser Cache:** First, the browser checks its cache to see if it has recently visited https://www.google.com and stored the corresponding IP address.
+- **OS Cache:** If the browser cache is empty, the browser asks the operating system, which also has a DNS cache.
+- **Router Cache:** If the OS cache is empty, the request moves to your router, which might also have a cache.
+- **ISP DNS Server:** If the router doesn’t have the record, the request goes to the ISP’s DNS server.
+- **Recursive Search:** If the ISP’s DNS server doesn’t know, it starts a recursive search, querying other DNS servers until it finds the authoritative DNS server for google.com, which provides the IP address.
+
+## 2. TCP/IP
+
+Once the IP address is found, the browser needs to establish a connection to the server using the Transmission Control Protocol (TCP) and Internet Protocol (IP).
+
+- **TCP Handshake:** A TCP connection is established using a three-way handshake:
+  - **SYN:** The browser sends a SYN (synchronize) packet to the server to initiate the connection.
+  - **SYN-ACK:** The server responds with a SYN-ACK (synchronize-acknowledge) packet.
+  - **ACK:** The browser sends an ACK (acknowledge) packet back to the server, and the connection is established.
+- **IP Routing:** Data packets are routed through various intermediate routers to reach the destination server.
+
+## 3. Firewall
+
+Firewalls are security systems that monitor and control incoming and outgoing network traffic based on predetermined security rules. Both your device and the server have firewalls.
+
+- **Client-side Firewall:** Ensures that only authorized outgoing requests are allowed from your device.
+- **Server-side Firewall:** Protects the server from malicious incoming traffic by allowing only legitimate requests.
+
+## 4. HTTPS/SSL
+
+HTTPS (Hypertext Transfer Protocol Secure) ensures that data transmitted between your browser and the server is encrypted using SSL/TLS (Secure Sockets Layer/Transport Layer Security).
+
+- **SSL Handshake:** Establishing a secure connection involves:
+  - **ClientHello:** The browser sends a ClientHello message to the server, initiating the SSL handshake.
+  - **ServerHello:** The server responds with a ServerHello message, providing its SSL certificate.
+  - **Certificate Verification:** The browser verifies the server’s certificate against its trusted Certificate Authorities (CAs).
+  - **Key Exchange:** Both parties generate session keys for encryption.
+- **Secure Connection:** Data is encrypted and decrypted using the session keys, ensuring secure communication.
+
+## 5. Load Balancer
+
+Load Balancers distribute incoming network traffic across multiple servers to ensure no single server becomes overwhelmed, improving availability and reliability.
+
+- **Traffic Distribution:** The load balancer receives the request and decides which server to forward it to based on various algorithms (e.g., round-robin, least connections).
+- **Health Checks:** Continuously monitors the health of servers to ensure requests are sent only to healthy servers.
+
+## 6. Web Server
+
+The Web Server (e.g., Apache, Nginx) handles the incoming request and serves static content (HTML, CSS, JavaScript, images).
+
+- **Request Handling:** Receives the HTTP request from the load balancer.
+- **Static Content:** Serves static files directly if the request is for static content.
+- **Forward Request:** If dynamic content is needed, forwards the request to the application server.
+
+## 7. Application Server
+
+The Application Server (e.g., Node.js, Django, Ruby on Rails) processes dynamic content, executes business logic, and interacts with the database.
+
+- **Processing Request:** Executes the server-side code to generate dynamic content.
+- **Business Logic:** Performs necessary computations, logic, and decision-making based on the request.
+- **Database Interaction:** Queries the database for any required data.
+
+## 8. Database
+
+The Database (e.g., MySQL, PostgreSQL, MongoDB) stores and retrieves data as requested by the application server.
+
+- **Query Execution:** The application server sends SQL or NoSQL queries to the database.
+- **Data Retrieval:** The database fetches the requested data and sends it back to the application server.
+- **Data Storage:** Stores any new or updated data as requested by the application server.
+
+## Conclusion
+
+The process that occurs when you type https://www.google.com in your browser and press Enter involves multiple steps and components working together seamlessly. Understanding this workflow not only helps you appreciate the complexity of web interactions but also prepares you for technical interviews and real-world problem-solving in software engineering.
+
