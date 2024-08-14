@@ -58,7 +58,11 @@ def count_words(subreddit, word_list):
 
     for word in word_list:
         dictionary[word] = 0
+<<<<<<< HEAD
 
+=======
+OB
+>>>>>>> 33aae3894a71dbfa66962c803967a94ef147fd77
     recurse(subreddit, dictionary)
 
     l = sorted(dictionary.items(), key=lambda kv: kv[1])
